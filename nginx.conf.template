@@ -6,6 +6,11 @@ http {
   server { 
     listen ${PORT};
 
+    location /healthcheck {
+      return 200 'Success!';
+      add_header Content-Type text/plain;
+    }
+
     location /api {
         proxy_ssl_server_name on;
         proxy_pass ${API_HOST};

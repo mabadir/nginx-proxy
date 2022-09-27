@@ -19,6 +19,7 @@
           "maxInstances": 1,
           "dockerfilePath": "./Dockerfile",
           "dockerfileContext": ".",
+          "healthCheckPath": "/healthcheck",
           "envVariables": {
             "PORT": 80,
             "API_HOST": "https://app.flightcontrol.dev",
