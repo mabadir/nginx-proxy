@@ -1,0 +1,31 @@
+{
+  "environments": [
+    {
+      "id": "nginx-app",
+      "name": "nginx-app",
+      "region": "us-east-2",
+      "source": {
+        "branch": "main"
+      },
+      "services": [
+        {
+          "id": "proxy",
+          "name": "proxy",
+          "type": "fargate",
+          "cpu": 0.5,
+          "memory": 1,
+          "port": 80,
+          "minInstances": 1,
+          "maxInstances": 1,
+          "dockerfilePath": "./Dockerfile",
+          "dockerfileContext": ".",
+          "envVariables": {
+            "PORT": 80,
+            "API_HOST": "https://app.flightcontrol.dev",
+            "WEB_HOST": "https://flightcontrol.dev"
+          }
+        }
+      ]
+    }
+  ]
+}
