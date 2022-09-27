@@ -7,10 +7,12 @@ http {
     listen ${PORT};
 
     location /api {
+        proxy_ssl_server_name on;
         proxy_pass ${API_HOST};
       }
 
     location / {
+        proxy_ssl_server_name on;
         proxy_pass ${WEB_HOST};
       }
   }
