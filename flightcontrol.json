@@ -1,4 +1,5 @@
 {
+  "$schema": "https://app.flightcontrol.dev/schema.json",
   "environments": [
     {
       "id": "nginx-app",
@@ -18,12 +19,18 @@
           "minInstances": 1,
           "maxInstances": 1,
           "dockerfilePath": "./Dockerfile",
-          "dockerfileContext": ".",
+          "dockerContext": ".",
           "healthCheckPath": "/healthcheck",
           "envVariables": {
             "PORT": 80,
             "API_HOST": "https://app.flightcontrol.dev",
-            "WEB_HOST": "https://flightcontrol.dev"
+            "WEB_HOST": "https://flightcontrol.dev",
+            "OWN_HOST": {
+              "fromService": {
+                "id": "proxy",
+                "value": "host"
+              }
+            }
           }
         }
       ]
